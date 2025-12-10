@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sketch Interactivo</title>
+
+  <script src="libraries/p5.min.js"></script>
+  <script src="libraries/p5.sound.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #001f3f;
+    }
+
+    #canvasWrapper {
+      width: 400px;
+      height: 400px;
+      margin-top: 20px;
+      border: 2px solid #ccc;
+    }
+
+    input, button {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: #fff;
+    }
+
+    input {
+      width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <input type="text" id="textInput" placeholder="Escribe algo...">
+
+  <button id="myButton">Random Blue</button>
+
+  <div id="canvasWrapper"></div>
+
+  <script src="sketch.js"></script>
+
+</body>
+</html>
