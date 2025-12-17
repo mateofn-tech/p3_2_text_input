@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>p5.js texto en caída</title>
+
+    <!-- Librerías p5 -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/addons/p5.dom.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      let textInput;
+      let letters = [];
+
+      function setup() {
+        createCanvas(400, 400);
+
+        textInput = createInput("");
+        textInput.attribute("placeholder", "escribe aquí");
+        textInput.input(updateText);
+      }
+
+      function draw() {
+        background(220);
+
+        for (let l of letters) {
+          l.update();
+          l.display();
+        }
+      }
+
+      function updateText() {
+        let txt = textInput.value();
+        letters = [];
+
+        let startX = width / 2 - txt.length * 10;
+
+        for (let i = 0; i < txt.length; i++) {
+          letters.push(new FallingLetter(
+            txt[i],
+            startX + i * 20,
+            -random(50, 200)
+          ));
+        }
+      }
+
+      class FallingLetter {
+        constructor(char, x, y) {
+          this.char = char;
+          this.x = x;
+          this.y = y;
+          this.speed = random(1, 3);
+        }
+
+        update() {
+          if (this.y < height / 2) {
+            this.y += this.speed;
+          }
+        }
+
+        display() {
+          textSize(24);
+          fill(0);
+          textAlign(CENTER, CENTER);
+          text(this.char, this.x, this.y);
+        }
+      }
+    </script>
+  </body>
+</html>
